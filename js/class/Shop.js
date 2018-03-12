@@ -1,12 +1,13 @@
 class Shop {
-    constructor(map, position, shop, description){
+    constructor(map, position, shop){
 
 
+        this.shop_id = 0;
         this.g_marker = null;
         this.g_infowindows = null;
 
         this.createG_marker(map, position, shop);
-        this.createG_infowindow(shop, description);
+        this.createG_infowindow(shop);
         this.linkMarkerWindow(map);
     }
 
@@ -18,13 +19,11 @@ class Shop {
         });
     }
 
-    createG_infowindow(shop, description){
+    createG_infowindow(shop){
         let content = "<h3>" + shop + "</h3>";
-            content += "<p>" + description + "</p>";
-
-            this.g_infowindows = new google.maps.InfoWindow({
-                content: content
-            });
+        this.g_infowindows = new google.maps.InfoWindow({
+            content: content
+        });
     }
 
     linkMarkerWindow(map){

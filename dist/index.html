@@ -14,10 +14,7 @@
                     <form id="form-maps">
                         <label>
                             <span>Magasin :</span>
-                            <input type="text" id="shop_label"> </label>
-                        <label>
-                            <span>Description :</span>
-                            <input type="text" id="description">
+                            <input type="text" id="shop">
                         </label>
                         <label>
                             <span>Latitude :</span>
@@ -38,6 +35,14 @@
                             <span>Prénom Vendeur :</span>
                             <input type="text" id="seller_firstname">
                         </label>
+                        <label>
+                            <form name="Magasin">
+                                Magasin :
+                                <select name="ListeMagasins">
+                                    <option SELECTED>-- Sélectionnez un magasin --</option>
+                                </select>
+                            </form>
+                        </label>
 
                         <input type="submit" value="add_seller" id="add_seller">
 
@@ -47,7 +52,7 @@
                             <span>Nouveau Produit :</span>
                             <input type="text" id="product_label"> </label>
                         <label>
-                            <span>Description :</span>
+                            <span>Visuel :</span>
                             <input type="text" id="product_description">
                         </label>
                         <label>
@@ -56,39 +61,8 @@
                         </label>
 
                         <input type="submit" value="add_product" id="add_product">
-
-                        <br>
-
-                        <!--<fieldset>
-                            <label>
-                                <span>Hôtel :</span>
-                                <input type="radio" name="structure" id="hotel" value="hotel">
-                            </label>
-                            <label>
-                                <span>Restaurant :</span>
-                                <input type="radio" name="structure" id="restaurant" value="restaurant">
-                            </label>
-                            <label>
-                                <span>Bar :</span>
-                                <input type="radio" name="structure" id="bar" value="bar">
-                            </label>
-                        </fieldset>-->
-                        <!--<input type="submit" value="Ajouter">-->
                     </form>
-                    <!--<form id="filter">
-                        <label>
-                            <span>Hotel :</span>
-                            <input type="checkbox" id="hotel" value="hotel">
-                        </label>
-                        <label>
-                            <span>Restaurant :</span>
-                            <input type="checkbox" id="restaurant" value="restaurant">
-                        </label>
-                        <label>
-                            <span>Bar :</span>
-                            <input type="checkbox" id="bar" value="bar">
-                        </label>
-                    </form>-->
+
                 </div>
         </div>
         <script src="main.js"></script>

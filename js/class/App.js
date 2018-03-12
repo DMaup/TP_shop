@@ -1,14 +1,14 @@
-const Shop = require("./Shop");
+const $         = require("jquery-slim");
+const Shop      = require("./Shop");
+const Seller    = require("./Seller");
 class App {
     constructor() {
 
         this.$form          = document.getElementById("form-maps");
-        this.$shop          = document.getElementById("shop_label");
-        this.$description   = document.getElementById("description");
+        this.$shop          = document.getElementById("shop");
         this.$latitude      = document.getElementById("latitude");
         this.$longitude     = document.getElementById("longitude");
-        /*this.$structure    = document.getElementById("structure");
-        this.$filters       = document.querySelectorAll("input[type='checkbox']");*/
+        this.shops = [];
 
         this.position = {
             lat: 0,
@@ -17,7 +17,6 @@ class App {
 
         this.map = null;
         this.appMarker = null;
-        this.shops = [];
     }
 
     initMap(idElement) {
@@ -55,7 +54,7 @@ class App {
         this.appMarker = new google.maps.Marker({
             position: this.position,
             map: this.map,
-            $shop: 'Vous êtes ici !'
+            title: 'Vous êtes ici !'
         });
 
 
@@ -64,56 +63,49 @@ class App {
         });
     }
 
-    addShop() {
+    addShop(shop_id) {
         const position = {
             lat: parseFloat(this.$latitude.value),
             lng: parseFloat(this.$longitude.value)
         };
 
-
         const shop = new Shop(
             this.map,
             position,
             this.$shop.value,
-            this.$description.value
-            //this.$form.elements["structure"].value
+            this.shop_id = this.shop_id++
         );
 
         let content = "<h3>" + this.$shop.value + "</h3>";
-        content += "<p>" + this.$description.value + "</p>";
 
         const infowindow = new google.maps.InfoWindow({
             content: content
         });
 
-        //this.shops[shop.structure].push(shop);
+        this.shops.push(this.shop_id, this.$shop.value, this.$latitude.value, this.$longitude.value);
+
         this.clearForm();
+
     }
 
     clearForm(){
      this.$form.reset();
     }
 
-   /* filterMarkers(structure, checked){
-        const map = checked ? this.map : null;
-
-        for (let shop of this.shops[structure]){
-            shop.g_marker.setMap(map);
-        }
-
-
-    }*/
-
     storeShops(){
+        console.log(this.shops);
         const key = "shops";
-        localStorage.setItem(key,JSON.stringify(this.shops));
+        localStorage.setItem(key, JSON.stringify(this.shops));
     }
 
-   /* registerInLocalStorage(){
+    toJSON(){
+        return{
+            //shop_id: this.shop_id,
+            shop: this.$shop.value,
+            lat: this.position.lat,
+            lng: this.position.lng
+        }
+    }
 
-        const stringified = JSON.stringify( this.shops );
-        localStorage.setItem( shops , stringified );
-
-    }*/
 }
     module.exports = App;

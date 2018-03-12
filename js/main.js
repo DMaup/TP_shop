@@ -21,7 +21,7 @@ GoogleMapsLoader.load(function () {
 
     });
 
-    app.$form.onsubmit = function () {
+    app.$form.onsubmit = function ( event ) {
         event.preventDefault();
         app.addShop();
         app.storeShops();
@@ -33,15 +33,6 @@ GoogleMapsLoader.load(function () {
 
 
     });
-
-  /*  for(let $filter of app.$filters){
-        $filter.onclick = function () {
-            const structure = $filter.value;
-            const checked = $filter.checked;
-
-            app.filterMarkers(structure, checked);
-        }
-    }*/
 
 
 
